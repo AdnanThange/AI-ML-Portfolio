@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# heart_disease_pipeline.py
+
+>>>>>>> 5fd550b (Add Handwritten Digit Recognition project)
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -77,7 +82,11 @@ final_model = best_models_sorted[0]["best_estimator"]
 best_model_name = best_models_sorted[0]["model_name"]
 
 print(f"\n Best Model: {best_model_name}")
+<<<<<<< HEAD
 print(f"Best Cross-Validation Score: {best_models_sorted[0]['best_score']:.4f}")
+=======
+print(f"🔍 Best Cross-Validation Score: {best_models_sorted[0]['best_score']:.4f}")
+>>>>>>> 5fd550b (Add Handwritten Digit Recognition project)
 
 y_pred = final_model.predict(X_test)
 
