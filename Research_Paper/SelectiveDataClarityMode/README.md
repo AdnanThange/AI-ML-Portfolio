@@ -1,6 +1,5 @@
 # Selective Data Clarity Model (SDC-AF)
 
-[Read the Research Paper (DOCX)](./Research_Paper/SelectiveDataClarityModel/SDC_Model.docx)
 
 
 
