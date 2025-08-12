@@ -4,6 +4,7 @@
 
 
 
+
 The **Selective Data Clarity Model (SDC-AF)** is a Python-based preprocessing framework for automated feature selection and outlier elimination in machine learning workflows.
 
 This model enhances data clarity, improves model performance, and maintains feature interpretability, making it suitable for real-world domains such as healthcare, finance, and scientific research.
