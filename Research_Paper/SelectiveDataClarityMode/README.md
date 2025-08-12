@@ -24,10 +24,14 @@ This model enhances data clarity, improves model performance, and maintains feat
 
 ## Performance Highlights
 
-| Dataset      | Preprocessing Method | Accuracy |
-|--------------|----------------------|----------|
-| Iris         | PCA                  | 95%      |
-| Iris         | SDC Model            | 100%     |
+| Dataset             | Preprocessing Method | Accuracy / R² Score |
+|---------------------|----------------------|--------------------|
+| Iris                | PCA                  | 95%                |
+| Iris                | SDC Model            | 100%               |
+| Student Performance | PCA                  | 0.98898            |
+| Student Performance | SDC Model            | 0.9890             |
+
+
 
 - Feature reduction: 30–50%
 - Outlier removal: 3–7% of rows
