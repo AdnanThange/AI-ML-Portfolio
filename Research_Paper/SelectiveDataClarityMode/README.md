@@ -1,6 +1,7 @@
 # Selective Data Clarity Model (SDC-AF)
 
-[Selective Data Clarity Model - Research Paper](Research_Paper/SelectiveDataClarityMode/Selective_Data_Clarity_Model_Research_Paper_updated.pdf)
+[Selective Data Clarity Model - Research Paper](Research_Paper/SelectiveDataClarityMode/Selective_Data_Clarity_Model_Research_Paper_updated.docx)
+
 
 
 
