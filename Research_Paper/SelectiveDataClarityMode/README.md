@@ -1,6 +1,6 @@
 # Selective Data Clarity Model (SDC-AF)
 
-[Selective Data Clarity Model - Research Paper (PDF)](https://raw.githubusercontent.com/AdnanThange/AI-ML-Portfolio/main/Research_Paper/SelectiveDataClarityMode/Selective%20Data%20Clarity%20Model_Research_Paper_updated.pdf)
+[Selective Data Clarity Model - Research Paper (Online View)](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FAdnanThange%2FAI-ML-Portfolio%2Frefs%2Fheads%2Fmain%2FResearch_Paper%2FSelectiveDataClarityMode%2FSelective%2520Data%2520Clarity%2520Model_Research_Paper_updated.docx&wdOrigin=BROWSELINK)
 
 
 
