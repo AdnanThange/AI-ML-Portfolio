@@ -1,6 +1,7 @@
 # Selective Data Clarity Model (SDC-AF)
 
-[Read the Full Research Paper Research_Paper/SelectiveDataClarityMode/Selective Data Clarity Model_Research_Paper_updated.docx
+[Read the Full Research Paper](Research_Paper/SelectiveDataClarityMode/Selective%20Data%20Clarity%20Model_Research_Paper_updated.docx)
+
 
 
 The **Selective Data Clarity Model (SDC-AF)** is a Python-based preprocessing framework for automated feature selection and outlier elimination in machine learning workflows.
