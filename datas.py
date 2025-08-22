@@ -5,7 +5,7 @@ import os
 data = {
     'Name': ['Alice', 'Bob', 'Charlie'],
     'Age': [25, 30, 35],
-    'City': ['New York', 'Los Angeles', 'Chicago']
+    'City': ['gf1', 'Los Angeles', 'Chicago']
 }
 
 # Creating DataFrame from the data
