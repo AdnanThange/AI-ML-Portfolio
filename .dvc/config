@@ -1,4 +1,8 @@
 [core]
     remote = myremote
 ['remote "myremote"']
+<<<<<<< HEAD
     url = ../s3
+=======
+    url = s3://your-bucket-name
+>>>>>>> ff6c2a89d9dbdf6bb39d8c6b1872eb7ea7ba60a7
