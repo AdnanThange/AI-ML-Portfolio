@@ -1,8 +1,0 @@
-2025-08-24 19:38:47,940:DEBUG:Data loaded successfully
-2025-08-24 19:38:47,940:DEBUG:Missing values dropped
-2025-08-24 19:38:47,942:DEBUG:Data split into train and test sets
-2025-08-24 19:38:47,943:DEBUG:Feature scaling done
-2025-08-24 19:38:47,944:DEBUG:Linear Regression model trained
-2025-08-24 19:38:47,947:DEBUG:Model saved at models\linear_regression.pkl
-2025-08-24 19:38:47,948:DEBUG:Model evaluation done: MSE=59738273.78781907, R2=0.9844753004407765
-2025-08-24 19:38:47,949:DEBUG:Evaluation metrics saved to evaluation\metrics.json
