@@ -1,0 +1,8 @@
+models/*
+!models/.gitkeep
+
+evaluation/*
+!evaluation/.gitkeep
+
+logs/*
+!logs/.gitkeep
