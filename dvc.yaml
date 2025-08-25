@@ -1,0 +1,33 @@
+stages:
+  load_data:
+    cmd: python src/load_data.py
+    deps:
+      - src/load_data.py
+      - data/raw/data.csv
+    outs:
+      - data/loaded/data.csv
+
+  preprocessing:
+    cmd: python src/preprocessing.py
+    deps:
+      - src/preprocessing.py
+      - data/loaded/data.csv
+    outs:
+      - data/processed
+
+  train_model:
+    cmd: python src/model.py
+    deps:
+      - src/model.py
+      - data/processed
+    outs:
+      - models/model.joblib
+
+  evaluate:
+    cmd: python src/evaluation.py   # <-- Correct file name
+    deps:
+      - src/evaluation.py          # <-- Correct file name
+      - models/model.joblib
+      - data/processed
+    outs:
+      - evaluation/metrics.json
