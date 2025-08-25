@@ -4,6 +4,22 @@ from preprocessing import preprocess_data
 from model import train_model
 from pathlib import Path
 
+
+import yaml
+
+with open("params.yaml") as f:
+    params = yaml.safe_load(f)
+
+RAW_DATA = params["data"]["raw_path"]
+PROCESSED_DATA_FOLDER = params["data"]["processed_path"]
+TARGET_COLUMN = params["data"]["target_column"]
+
+TEST_SIZE = params["preprocessing"]["test_size"]
+RANDOM_STATE = params["preprocessing"]["random_state"]
+MODEL_PATH = params["training"]["model_path"]
+METRICS_PATH = params["evaluation"]["metrics_path"]
+
+
 # Paths
 RAW_DATA = "data/raw/data.csv"
 PROCESSED_DATA_FOLDER = "data/processed"

@@ -9,8 +9,8 @@ stages:
       size: 3103
     - path: src/load_data.py
       hash: md5
-      md5: 5a912a1ff9bb1341930143ed5e1b28e0
-      size: 416
+      md5: b416f5993d068033aaebdc39d2f72637
+      size: 855
     outs:
     - path: data/loaded/data.csv
       hash: md5
@@ -25,8 +25,13 @@ stages:
       size: 3204
     - path: src/preprocessing.py
       hash: md5
-      md5: 8182cedf03d7758bef1a03933260b5ce
-      size: 1621
+      md5: 44c3b6e104b39e30c16fc5237c4e8e53
+      size: 2060
+    params:
+      params.yaml:
+        data.target_column: Price ($)
+        preprocessing.random_state: 42
+        preprocessing.test_size: 0.3
     outs:
     - path: data/processed
       hash: md5
@@ -43,8 +48,11 @@ stages:
       nfiles: 4
     - path: src/model.py
       hash: md5
-      md5: 0db37d39320dcd360d25f0c9eeacd4ea
-      size: 759
+      md5: b6e5174a802407555da6af259682b4c6
+      size: 1198
+    params:
+      params.yaml:
+        training.model_path: models/model.joblib
     outs:
     - path: models/model.joblib
       hash: md5
@@ -64,8 +72,11 @@ stages:
       size: 1023
     - path: src/evaluation.py
       hash: md5
-      md5: 03ab889c931a719d033f18c1642ef465
-      size: 967
+      md5: d5d38b55cd594f6e75da145fc96283e4
+      size: 1023
+    params:
+      params.yaml:
+        evaluation.metrics_path: evaluation/metrics.json
     outs:
     - path: evaluation/metrics.json
       hash: md5

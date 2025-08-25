@@ -14,6 +14,10 @@ stages:
       - data/loaded/data.csv
     outs:
       - data/processed
+    params:
+      - data.target_column
+      - preprocessing.test_size
+      - preprocessing.random_state
 
   train_model:
     cmd: python src/model.py
@@ -22,12 +26,17 @@ stages:
       - data/processed
     outs:
       - models/model.joblib
+    params:
+      - training.model_path
 
   evaluate:
-    cmd: python src/evaluation.py   # <-- Correct file name
+    cmd: python src/evaluation.py
     deps:
-      - src/evaluation.py          # <-- Correct file name
+      - src/evaluation.py
       - models/model.joblib
       - data/processed
-    outs:
+    metrics:
       - evaluation/metrics.json
+    params:
+      - evaluation.metrics_path
+
