@@ -1,4 +1,4 @@
-# Adnan Thange - AI, ML , GenAI & Mlops Portfolio
+# Adnan Thange - AI, ML & Mlops Portfolio
 
 _A curated collection of my Machine Learning, Deep Learning, Generative AI, and MLOps projects._
 
