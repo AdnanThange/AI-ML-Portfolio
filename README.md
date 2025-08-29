@@ -58,6 +58,47 @@ _A curated collection of my Machine Learning, Deep Learning, Generative AI, and 
 - Integrated versioning and collaborative workflow with **DagsHub**  
 - Optimized model performance through hyperparameter tuning and preprocessing  
 
+# CI Workflow for IMDB LSTM Training
+
+This repository contains the Continuous Integration (CI) workflow for the IMDB LSTM training project. The workflow automatically runs on `push` or `pull request` to the `main` branch and executes the training script.
+
+---
+
+## 🛠 Workflow Steps
+
+1. **Checkout Code**  
+   The workflow first checks out the repository code.
+
+2. **Set Up Python**  
+   Python 3.10 is installed.
+
+3. **Install Dependencies**  
+   Required Python packages from `requirements.txt` are installed.
+
+4. **Run Training Script**  
+   Executes `train_imdb.py` located in:  
+   `Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/train_imdb.py`
+
+5. **Upload Artifacts (Optional)**  
+   Any generated files (like logs, predictions, or screenshots) can be uploaded as workflow artifacts.
+
+---
+
+## 📸 CI Run Screenshot
+
+The following screenshot shows a successful CI run for the training workflow:  
+
+![CI Run Screenshot](Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/CI AND CD/ci_run_screenshot.png)
+
+---
+
+## ⚡ Notes
+
+- This workflow is **CI only**. No deployment (CD) is configured yet.
+- Screenshots are stored in the `Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/CI AND CD` folder.
+- Ensure your Python scripts and dependencies are correctly configured to avoid workflow failures.
+
+
 ---
 
 ## 📫 Contact
