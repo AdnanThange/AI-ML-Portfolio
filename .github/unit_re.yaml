@@ -1,4 +1,4 @@
-name: IMDB LSTM Databricks CI
+name: IMDB LSTM CI
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository
+      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -31,9 +31,3 @@ jobs:
       - name: Run IMDB LSTM script
         run: |
           python "Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/train_imdb.py"
-
-      # Optional: Set Databricks environment variables (if needed)
-      # - name: Set Databricks environment variables
-      #   env:
-      #     DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-      #     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
