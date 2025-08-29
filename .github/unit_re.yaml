@@ -1,4 +1,4 @@
-name: Run IMDB Training
+name: Run IMDB LSTM Training
 
 on:
   push:
@@ -23,16 +23,22 @@ jobs:
         with:
           python-version: '3.10'
 
-      # 3. Install dependencies directly
+      # 3. Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install tensorflow mlflow numpy scikit-learn
+          pip install tensorflow scikit-learn mlflow numpy
 
-      # 4. Debug: Show repo structure
+      # 4. Set Databricks credentials manually
+      - name: Set Databricks environment variables
+        run: |
+          echo "DATABRICKS_HOST=https://dbc-24fe64fc-5231.cloud.databricks.com" >> $GITHUB_ENV
+          echo "DATABRICKS_TOKEN=dapi525ed5b453b93e8a21477ba74d8314f6" >> $GITHUB_ENV
+
+      # 5. Debug: Show repo structure (optional)
       - name: Show repo files
         run: ls -R
 
-      # 5. Run training script
+      # 6. Run training script
       - name: Run training script
         run: python "Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/train_imdb.py"
