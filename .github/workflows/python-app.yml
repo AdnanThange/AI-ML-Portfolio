@@ -1,44 +1,45 @@
-name: Run IMDB LSTM Training
+# train_imdb_simple.py
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+from sklearn.metrics import accuracy_score
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# -------------------------------
+# Dataset
+# -------------------------------
+max_features = 10000
+maxlen = 200
 
-    steps:
-      # 1. Checkout repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+(x_train, y_train), (x_test, y_test) = keras.datasets.imdb.load_data(num_words=max_features)
+x_train = keras.preprocessing.sequence.pad_sequences(x_train, maxlen=maxlen)
+x_test = keras.preprocessing.sequence.pad_sequences(x_test, maxlen=maxlen)
 
-      # 2. Set up Python
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+# -------------------------------
+# Model
+# -------------------------------
+model = keras.Sequential([
+    layers.Embedding(max_features, 128),
+    layers.LSTM(64, dropout=0.2, recurrent_dropout=0.2),
+    layers.Dense(1, activation="sigmoid")
+])
+model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 
-      # 3. Install dependencies
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install tensorflow scikit-learn mlflow numpy
+# -------------------------------
+# Training
+# -------------------------------
+history = model.fit(
+    x_train, y_train,
+    batch_size=64,
+    epochs=1,
+    validation_split=0.2,
+    verbose=1
+)
 
-      # 4. Set Databricks credentials manually
-      - name: Set Databricks environment variables
-        run: |
-          echo "DATABRICKS_HOST=https://dbc-24fe64fc-5231.cloud.databricks.com" >> $GITHUB_ENV
-          echo "DATABRICKS_TOKEN=dapi525ed5b453b93e8a21477ba74d8314f6" >> $GITHUB_ENV
-
-      # 5. Debug: Show repo structure (optional)
-      - name: Show repo files
-        run: ls -R
-
-      # 6. Run training script
-      - name: Run training script
-        run: python "Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/train_imdb.py"
+# -------------------------------
+# Evaluation
+# -------------------------------
+y_pred_prob = model.predict(x_test)
+y_pred = (y_pred_prob > 0.5).astype(int)
+test_acc = accuracy_score(y_test, y_pred)
+print(f"Test Accuracy: {test_acc:.4f}")
