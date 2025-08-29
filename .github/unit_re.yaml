@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
+      # Step 1: Checkout the repo
       - name: Checkout code
         uses: actions/checkout@v4
 
       # Step 2: Set up Python
-      - name: Set up Python
+      - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
@@ -27,7 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install tensorflow scikit-learn mlflow numpy
 
-      # Step 4: Run the IMDB LSTM script
-      - name: Run IMDB LSTM script
+      # Step 4: Run your training script
+      - name: Run train_imdb.py
         run: |
           python "Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/train_imdb.py"
