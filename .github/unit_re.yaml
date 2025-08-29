@@ -1,33 +1,38 @@
-name: IMDB LSTM CI
+name: Run IMDB LSTM Training
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repo
+      # 1. Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      # Step 2: Set up Python
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v3
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: '3.10'
 
-      # Step 3: Install dependencies
+      # 3. Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install tensorflow scikit-learn mlflow numpy
+          pip install -r requirements.txt
 
-      # Step 4: Run your training script
-      - name: Run train_imdb.py
-        run: |
-          python "Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/train_imdb.py"
+      # 4. Debug: Show repository structure
+      - name: Show repository files
+        run: ls -R
+
+      # 5. Run the training script
+      - name: Run training script
+        run: python "Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow/train_imdb.py"
