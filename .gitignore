@@ -37,3 +37,13 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 *.h5
+
+__pycache__
+*.pyc
+*.ipynb
+data/
+logs/
+*.h5
+*.ckpt
+/my_add
+/data2
