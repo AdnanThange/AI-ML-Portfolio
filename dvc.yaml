@@ -3,10 +3,6 @@ stages:
     cmd: python data2/src3/prepare.py
     deps:
       - data2/src3/prepare.py
-      - params.yaml
-    params:
-      - params.yaml:prepare.max_features
-      - params.yaml:prepare.maxlen
     outs:
       - data/processed/imdb.npz
 
@@ -15,16 +11,6 @@ stages:
     deps:
       - data2/src3/train.py
       - data/processed/imdb.npz
-      - params.yaml
-    params:
-      - params.yaml:train.batch_size
-      - params.yaml:train.epochs
-      - params.yaml:train.lstm_units
-      - params.yaml:train.embedding_dim
-      - params.yaml:train.dropout
-      - params.yaml:train.recurrent_dropout
-      - params.yaml:train.optimizer
-      - params.yaml:train.loss
     outs:
       - model/imdb_lstm.h5
 
@@ -34,8 +20,5 @@ stages:
       - data2/src3/evaluate.py
       - model/imdb_lstm.h5
       - data/processed/imdb.npz
-      - params.yaml
-    params:
-      - params.yaml:evaluate.threshold
     metrics:
       - metrics.json
