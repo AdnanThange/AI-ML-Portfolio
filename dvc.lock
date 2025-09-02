@@ -1,0 +1,45 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python data2/src3/prepare.py
+    outs:
+    - path: data/processed/imdb.npz
+      hash: md5
+      md5: 7234503ecdb7cc5d0197a23e06ea01e3
+      size: 40401002
+  train:
+    cmd: python data2/src3/train.py
+    deps:
+    - path: data/processed/imdb.npz
+      hash: md5
+      md5: 7234503ecdb7cc5d0197a23e06ea01e3
+      size: 40401002
+    - path: data2/src3/train.py
+      hash: md5
+      md5: 63da9241a55fb92d62dd162c1e2bbe13
+      size: 685
+    outs:
+    - path: model/imdb_lstm.h5
+      hash: md5
+      md5: a051c11519d2de77e0df05ebb1f03462
+      size: 15986376
+  evaluate:
+    cmd: python data2/src3/evaluate.py
+    deps:
+    - path: data/processed/imdb.npz
+      hash: md5
+      md5: 7234503ecdb7cc5d0197a23e06ea01e3
+      size: 40401002
+    - path: data2/src3/evaluate.py
+      hash: md5
+      md5: fcdaa38b382956c99660c0ec3744b7b1
+      size: 691
+    - path: model/imdb_lstm.h5
+      hash: md5
+      md5: a051c11519d2de77e0df05ebb1f03462
+      size: 15986376
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 63ccb597a4143a19b532b8d17faddac6
+      size: 832

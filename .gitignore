@@ -47,3 +47,4 @@ logs/
 *.ckpt
 /my_add
 /data2
+/metrics.json
