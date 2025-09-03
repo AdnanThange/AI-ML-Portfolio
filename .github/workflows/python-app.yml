@@ -1,5 +1,6 @@
 name: Train Student Performance MLflow
 
+# Trigger workflow on push to main branch
 on:
   push:
     branches:
@@ -10,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      # Databricks credentials stored as GitHub secrets
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
@@ -33,3 +35,7 @@ jobs:
       # Step 4: Run ML training script
       - name: Run training script
         run: python dl_projects_lstm_with_mlflow/student_code.py
+
+      # Optional: list MLflow artifacts (if needed)
+      # - name: List MLflow artifacts
+      #   run: mlflow artifacts list --experiment-name "/Shared/Student-Performance"
