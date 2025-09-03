@@ -30,10 +30,10 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install numpy pandas scikit-learn joblib
 
-      # 4️⃣ Run the training script
+      # 4️⃣ Run the training script (correct path)
       - name: Run training
         run: |
-          python ML-Projects/train_student_performance.py
+          python ML-Projects/scripts/students_code.py
 
       # 5️⃣ (Optional) Upload model and preprocessor as artifacts
       - name: Upload model artifact
@@ -41,5 +41,5 @@ jobs:
         with:
           name: student-performance-model
           path: |
-            ML-Projects/linear_regression_model.pkl
-            ML-Projects/scaler_pca.npz
+            ML-Projects/scripts/linear_regression_model.pkl
+            ML-Projects/scripts/scaler_pca.npz
