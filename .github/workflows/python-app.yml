@@ -1,4 +1,4 @@
-name: Student Performance CI
+name: Student Performance Training
 
 on:
   push:
@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the repository
+      # 1️⃣ Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
       # 2️⃣ Set up Python
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -27,6 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ML-Projects/requierments.txt
 
-      # 4️⃣ Run student script
-      - name: Run Student Performance script
+      # 4️⃣ Run student training script
+      - name: Run Student Training
         run: python ML-Projects/scripts/students_code.py
