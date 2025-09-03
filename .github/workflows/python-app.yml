@@ -1,4 +1,4 @@
-name: Train Student Performance Model
+name: Train Student Performance MLflow
 
 on:
   push:
@@ -11,44 +11,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # -------------------------------
-    # 1. Checkout repository
-    # -------------------------------
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    # -------------------------------
-    # 2. Set up Python 3.10
-    # -------------------------------
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.10
+      # 2. Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
 
-    # -------------------------------
-    # 3. Upgrade pip
-    # -------------------------------
-    - name: Upgrade pip
-      run: python -m pip install --upgrade pip
+      # 3. Upgrade pip
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
 
-    # -------------------------------
-    # 4. Install dependencies
-    # -------------------------------
-    - name: Install dependencies
-      run: |
-        pip install mlflow pandas scikit-learn numpy
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install mlflow scikit-learn pandas numpy
 
-    # -------------------------------
-    # 5. Run the training script
-    # -------------------------------
-    - name: Run training script
-      run: python ML-Projects/train_student_performance_mlflow.py
+      # 5. Run the training script
+      - name: Train Student Model
+        run: python ML-Projects/train_student_performance_mlflow.py
 
-    # -------------------------------
-    # 6. Optional: Upload artifacts
-    # -------------------------------
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: mlflow-preprocessor
-        path: ML-Projects/scaler_pca.npz
+      # 6. Upload artifacts
+      - name: Upload preprocessor
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlflow-preprocessor
+          path: ML-Projects/scaler_pca.npz
+
+      - name: Upload training script
+        uses: actions/upload-artifact@v4
+        with:
+          name: training-script
+          path: ML-Projects/train_student_performance_mlflow.py
