@@ -1,19 +1,17 @@
-name: Train Student Performance
+name: Run Student ML Project
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  train:
+  run-student-code:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the repository
+      # 1️⃣ Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -23,13 +21,14 @@ jobs:
         with:
           python-version: '3.10'
 
-      # 3️⃣ Install dependencies
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r ML-Projects/requirements.txt
+      # 3️⃣ Upgrade pip
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
 
-      # 4️⃣ Run the student performance training script
-      - name: Run training script
-        run: |
-          python ML-Projects/scripts/students_code.py
+      # 4️⃣ Install dependencies
+      - name: Install dependencies
+        run: pip install -r ML-Projects/requirements.txt
+
+      # 5️⃣ Run the Python script
+      - name: Run student code
+        run: python ML-Projects/scripts/students_code.py
