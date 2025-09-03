@@ -29,13 +29,14 @@ jobs:
       # Step 3: Install dependencies
       - name: Install Python dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install mlflow scikit-learn pandas numpy
 
       # Step 4: Run ML training script
       - name: Run training script
-        run: python dl_projects_lstm_with_mlflow/student_code.py
+        run: python "Dl Projects with Mlops/dl_projects_lstm_with_mlflow/student_code.py"
 
-      # Optional: list MLflow artifacts (if needed)
+      # Optional Step 5: List MLflow artifacts
       # - name: List MLflow artifacts
       #   run: mlflow artifacts list --experiment-name "/Shared/Student-Performance"
