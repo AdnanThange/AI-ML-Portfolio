@@ -1,38 +1,17 @@
-# ------------------------------
-# Base Image
-# ------------------------------
+# Use lightweight Python image
 FROM python:3.11-slim
 
-# ------------------------------
-# Environment Variables
-# ------------------------------
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PATH=/root/.local/bin:$PATH
-
-# ------------------------------
-# Set working directory
-# ------------------------------
+# Set working directory inside container
 WORKDIR /app
 
-# ------------------------------
-# Install dependencies
-# ------------------------------
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt \
-    && rm -rf /root/.cache/pip
+# Copy only the Python script
+COPY heart.py .
 
-# ------------------------------
-# Copy ML project folder
-# ------------------------------
-COPY ["Ml and Dl Projects with Mlops/dl_projects_lstm_with_mlflow", "/app/dl_projects_lstm_with_mlflow"]
+# Install Python dependencies
+RUN pip install --no-cache-dir pandas scikit-learn matplotlib seaborn prometheus_client
 
-# ------------------------------
-# Set working directory to the project folder
-# ------------------------------
-WORKDIR /app/dl_projects_lstm_with_mlflow
+# Expose the port your app uses
+EXPOSE 8000
 
-# ------------------------------
-# Default command
-# ------------------------------
-CMD ["python", "train_imdb.py"]
+# Run the Python script
+CMD ["python", "heart.py"]
