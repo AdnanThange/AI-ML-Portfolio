@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Image Object Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header { background: #2c3e50; color: white; padding: 20px; }
+        h1 { margin: 0; }
+        .container {
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        form { margin: 20px 0; }
+        button {
+            background: #3498db; border: none; color: white;
+            padding: 12px 20px; border-radius: 6px;
+            font-size: 16px; cursor: pointer; transition: background 0.3s ease;
+        }
+        button:hover { background: #2980b9; }
+        img { margin-top: 20px; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
+        a { display: inline-block; margin-top: 30px; color: #2c3e50; text-decoration: none; font-weight: bold; }
+        a:hover { color: #3498db; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Object Detection</h1>
+    </header>
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Detect Objects</button>
+        </form>
+
+        {% if detected_image_path %}
+            <h2>Result:</h2>
+            <img src="{{ detected_image_path }}" width="700" alt="Detected image">
+        {% endif %}
+
+        <hr>
+        <a href="{% url 'home' %}">🏠 Go to Home</a>
+        <a href="{% url 'live_page' %}">🎥 Go to Live Camera Detection</a>
+    </div>
+</body>
+</html>
