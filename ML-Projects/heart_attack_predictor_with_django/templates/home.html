@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Heart Disease Predictor</title>
+</head>
+<body>
+    <h1>Heart Disease Predictor</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <label>Age:</label>
+        <input type="number" name="Age" required><br>
+
+        <label>Sex:</label>
+        <select name="Sex" required>
+            {% for sex in sex_choices %}
+                <option value="{{ sex }}">{{ sex }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Chest Pain Type:</label>
+        <select name="ChestPainType" required>
+            {% for cp in chest_pain_types %}
+                <option value="{{ cp }}">{{ cp }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Resting BP:</label>
+        <input type="number" name="RestingBP" required><br>
+
+        <label>Cholesterol:</label>
+        <input type="number" name="Cholesterol" required><br>
+
+        <label>Fasting Blood Sugar:</label>
+        <input type="number" name="FastingBS" min="0" max="1" required><br>
+
+        <label>Resting ECG:</label>
+        <select name="RestingECG" required>
+            {% for ecg in resting_ecg_choices %}
+                <option value="{{ ecg }}">{{ ecg }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Max Heart Rate:</label>
+        <input type="number" name="MaxHR" required><br>
+
+        <label>Exercise Angina:</label>
+        <select name="ExerciseAngina" required>
+            {% for ea in exercise_angina_choices %}
+                <option value="{{ ea }}">{{ ea }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Oldpeak:</label>
+        <input type="number" step="0.1" name="Oldpeak" required><br>
+
+        <label>ST Slope:</label>
+        <select name="ST_Slope" required>
+            {% for slope in st_slope_choices %}
+                <option value="{{ slope }}">{{ slope }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+
+    <h3>Last 5 Predictions:</h3>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Chest Pain</th>
+            <th>RestingBP</th>
+            <th>Cholesterol</th>
+            <th>FastingBS</th>
+            <th>RestingECG</th>
+            <th>MaxHR</th>
+            <th>ExerciseAngina</th>
+            <th>Oldpeak</th>
+            <th>ST_Slope</th>
+            <th>Prediction</th>
+        </tr>
+        {% for p in last_predictions %}
+        <tr>
+            <td>{{ p.age }}</td>
+            <td>{{ p.sex }}</td>
+            <td>{{ p.chest_pain_type }}</td>
+            <td>{{ p.resting_bp }}</td>
+            <td>{{ p.cholesterol }}</td>
+            <td>{{ p.fasting_bs }}</td>
+            <td>{{ p.resting_ecg }}</td>
+            <td>{{ p.max_hr }}</td>
+            <td>{{ p.exercise_angina }}</td>
+            <td>{{ p.oldpeak }}</td>
+            <td>{{ p.st_slope }}</td>
+            <td>{{ p.prediction }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
