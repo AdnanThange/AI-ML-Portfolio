@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boston House Price Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🏡 Boston House Price Predictor</h1>
+
+  <form id="predictForm">
+    <input type="number" step="any" name="RM" placeholder="Average Rooms (RM)" required />
+    <input type="number" step="any" name="LSTAT" placeholder="% Lower Status (LSTAT)" required />
+    <input type="number" step="any" name="PTRATIO" placeholder="Pupil-Teacher Ratio (PTRATIO)" required />
+    <button type="submit">Predict Price</button>
+  </form>
+
+  <h2 id="result"></h2>
+
+  <script src="script.js"></script>
+</body>
+</html>
